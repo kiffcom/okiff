@@ -8,76 +8,7 @@
 <script src="https://cdn.tailwindcss.com">&lt;/script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js">&lt;/script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
-<!--
-Palette de Couleurs Choisie (Inspirée de "Vibrant & Bold" - teintes bleues et oranges):
-Bleu Primaire: #3B82F6 (text-blue-500, bg-blue-500)
-Orange Accent: #F97316 (text-orange-500, bg-orange-500)
-Jaune Accent: #EAB308 (text-yellow-500, bg-yellow-500)
-Vert Accent: #10B981 (text-green-500, bg-green-500)
-Rouge Accent: #EF4444 (text-red-500, bg-red-500)
-Fond Principal: #F3F4F6 (bg-gray-100)
-Fond Cartes/Sections: #FFFFFF (bg-white)
-Texte Principal: #1F2937 (text-gray-800)
-Texte Secondaire: #4B5563 (text-gray-600)
-Texte Titres Importants: #111827 (text-gray-900)
 
-    Plan Narratif et Choix des Visualisations (Basé sur "Étude de Marché et Positionnement Stratégique pour Okiff" - id: e7dc135a-bc8b-45d5-93c5-f3ca81687f3c):
-
-    Section 1: Introduction - La Vision d'Okiff face aux Défis du Marché
-    * Contenu: Mission d'Okiff (OS Edge "low-tech"), complexité et coûts pour les PME.
-    * Objectif: Informer.
-    * Visualisation: Grands titres, paragraphes concis, logo Okiff stylisé (HTML/CSS), icônes Unicode pour problème/solution.
-    * Justification: Établir le contexte et la proposition de valeur initiale.
-    * Librairie/Méthode: HTML/CSS (Tailwind), caractères Unicode.
-
-    Section 2: Opportunités de Marché - Une Croissance Exponentielle
-    * Contenu: Données clés sur la croissance des marchés de l'Open Source, de l'Edge Computing, de l'iPaaS et de l'ESM.
-    * Objectif: Informer, Comparer (taux de croissance, tailles de marché).
-    * Visualisations:
-        * Marché Logiciels Open Source (2024 vs 2025, CAGR): Bar Chart (Chart.js). Données: $41.83Md (2024) -> $48.92Md (2025), CAGR 16.9%.
-        * Marché Edge Computing (Projection 2025-2029, CAGR): Line Chart (Chart.js). Données: $45.14Md (2025) -> $194.42Md (2029), CAGR 44.1%.
-        * Marché iPaaS (Taille 2025, CAGR): Donut Chart (Chart.js). Données: $15.63Md (2025), CAGR 25.9%.
-        * Marché ESM (Taille fin 2025, CAGR): Single Big Number. Données: $12.8Md (fin 2025), CAGR 18-20%.
-    * Texte Contextuel: Expliquer la signification de chaque marché et sa pertinence pour Okiff.
-    * Librairie/Méthode: Chart.js (Canvas pour tous les graphiques), HTML/CSS.
-
-    Section 3: Les Moteurs du Changement - Pourquoi Okiff est Pertinent Maintenant
-    * Contenu: Tendances de fond (Prolifération IoT, Big Data, Adoption IA, Faible Latence, Sécurité des Données).
-    * Objectif: Informer, Organiser.
-    * Visualisations: Liste HTML/CSS structurée avec des icônes Unicode pour chaque moteur. Statistique clé (ex: 90% d'entreprises utilisant l'OSS).
-    * Texte Contextuel: Illustrer comment ces moteurs créent un besoin impérieux pour des solutions comme Okiff.
-    * Librairie/Méthode: HTML/CSS (Tailwind), caractères Unicode.
-
-    Section 4: La Solution Okiff - Technologie et Architecture Simplifiées
-    * Contenu: Composants clés d'Okiff OS Edge (Noyau autogéré, HAL, Gestionnaire d'apps, IA Locale, etc.). Plateforme Cloud Okiff (Déploiement "Zero-Touch", mises à jour). Marketplace Okiff.
-    * Objectif: Organiser, Informer.
-    * Visualisations: Diagramme de type logigramme conceptuel (HTML/CSS avec Tailwind pour les flux) pour les composants d'Okiff OS Edge. Icônes Unicode pour la Plateforme Cloud et la Marketplace.
-    * Texte Contextuel: Expliquer comment Okiff simplifie la complexité de l'Edge pour les entreprises sans expertise IT poussée.
-    * Librairie/Méthode: HTML/CSS (Tailwind pour la structure et le style), caractères Unicode. (Conformément à l'interdiction de Mermaid JS et SVG).
-
-    Section 5: Avantages Concurrentiels - Se Démarquer dans le Paysage Technologique
-    * Contenu: Comparaison d'Okiff par rapport aux OS traditionnels, solutions de virtualisation, OS IoT dédiés, et plateformes Edge basées sur le cloud. Mise en avant de la simplicité, l'automatisation, la sécurité, et l'approche "low-tech".
-    * Objectif: Comparer, Informer.
-    * Visualisations: Tableau de comparaison HTML/CSS (Tailwind pour le style).
-    * Texte Contextuel: Synthétiser les arguments de vente uniques (USP) d'Okiff.
-    * Librairie/Méthode: HTML/CSS (Tailwind).
-
-    Section 6: Public Cible d'Okiff - Qui en Bénéficie le Plus?
-    * Contenu: PME, startups, OBNL, et organisations dans des environnements "low-tech" qui valorisent la simplicité, la rentabilité et le contrôle des données.
-    * Objectif: Informer.
-    * Visualisations: Sections de texte stylisées avec des icônes Unicode représentatives pour chaque segment cible.
-    * Texte Contextuel: Détailler pourquoi Okiff est une solution idéale pour ces segments spécifiques.
-    * Librairie/Méthode: HTML/CSS (Tailwind), caractères Unicode.
-
-    Section 7: L'Avenir avec Okiff - Vision et Conclusion
-    * Contenu: Démocratisation de la technologie, IA avancée (XAI, Apprentissage Fédéré), support pour Métavers, Robots, Drones. Engagement envers la croissance durable.
-    * Objectif: Informer, Inspirer.
-    * Visualisations: Énoncé de vision percutant, icônes Unicode pour les technologies futures et les concepts de durabilité.
-    * Texte Contextuel: Renforcer l'approche avant-gardiste et la mission à long terme d'Okiff.
-    * Librairie/Méthode: HTML/CSS (Tailwind), caractères Unicode.
-
-    Confirmation: NI MERMAID JS NI SVG n'ont été utilisés dans cette infographie. Toutes les visualisations graphiques sont réalisées avec Chart.js (rendu Canvas) ou avec des éléments HTML/CSS stylisés via Tailwind et des caractères Unicode.
--->
 <style>
     body {
         font-family: 'Inter', sans-serif;
