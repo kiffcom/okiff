@@ -1,684 +1,810 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Okiff : Tendances de l'Industrie et Étude de Marché</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Okiff : Tendances du Marché et Révolution Edge AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- 
+        Palette de Couleurs Choisie: "Energetic & Playful" (Adaptée)
+        Orange Primaire: #F97316 (text-orange-500, bg-orange-500)
+        Teal Secondaire: #14B8A6 (text-teal-500, bg-teal-500)
+        Jaune Accent: #FACC15 (text-yellow-500, bg-yellow-500)
+        Violet Accent: #A855F7 (text-purple-500, bg-purple-500)
+        Bleu Support: #3B82F6 (text-blue-500, bg-blue-500) - Utilisé pour la clarté dans certains graphiques
 
-<style>
-    body {
-        font-family: 'Inter', sans-serif;
-        scroll-behavior: smooth;
-    }
-    .chart-container {
-        position: relative;
-        width: 100%;
-        max-width: 600px; 
-        margin-left: auto;
-        margin-right: auto;
-        height: 300px; 
-        max-height: 400px; 
-        padding: 1rem; /* Ajout de padding pour l'esthétique */
-    }
-    @media (min-width: 768px) { /* md breakpoint */
-        .chart-container {
-            height: 320px; /* Hauteur ajustée pour tablettes */
-        }
-    }
-    @media (min-width: 1024px) { /* lg breakpoint */
-        .chart-container {
-            height: 350px; /* Hauteur ajustée pour grands écrans */
-        }
-    }
+        Fond Principal: #F3F4F6 (bg-gray-100)
+        Fond Cartes/Sections: #FFFFFF (bg-white)
+        Texte Principal: #1F2937 (text-gray-800)
+        Texte Secondaire: #4B5563 (text-gray-600)
+        Texte Titres Importants: #111827 (text-gray-900)
 
-    .stat-card {
-        background-color: #FFFFFF;
-        border-radius: 0.75rem; /* increased border-radius */
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Softer shadow */
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Pour mieux espacer le contenu verticalement */
-    }
-    .stat-value {
-        font-size: 2.5rem; /* Slightly larger */
-        font-weight: 700;
-        color: #3B82F6; 
-    }
-    .stat-label {
-        font-size: 1rem;
-        color: #4B5563; 
-        margin-top: 0.5rem;
-    }
-    .section-title {
-        font-size: 2rem; /* Slightly larger */
-        font-weight: 700;
-        color: #111827; 
-        margin-bottom: 1rem;
-        text-align: center;
-    }
-    .section-subtitle {
-        font-size: 1.125rem;
-        color: #4B5563; 
-        margin-bottom: 2.5rem; /* Increased margin */
-        text-align: center;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.6; /* Improved readability */
-    }
-    .okiff-flow-item {
-        background-color: #EFF6FF; 
-        border: 2px solid #BFDBFE; /* Slightly thicker border */
-        color: #1E40AF; /* Darker blue for better contrast */
-        border-radius: 0.5rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .okiff-flow-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    .okiff-flow-arrow {
-        color: #3B82F6;
-        font-weight: bold;
-    }
-    .nav-link {
-        transition: color 0.3s ease, transform 0.2s ease;
-        padding: 0.5rem 0.75rem;
-        border-radius: 0.375rem;
-    }
-    .nav-link:hover {
-        color: #F97316;
-        background-color: #FEF3C7; /* Light yellow on hover */
-        transform: translateY(-2px);
-    }
-    .sticky-nav {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px); /* Stronger blur */
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Softer shadow */
-    }
-    .hero-gradient {
-        background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
-    }
-    .card-hover {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card-hover:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-</style>
+        Plan Narratif et Choix des Visualisations (Basé sur "Étude de marché pour Okiff (avec focus Edge AI)" - id: e7dc135a-bc8b-45d5-93c5-f3ca81687f3c-v2):
+
+        Section 1: Introduction - La Révolution Okiff : L'Edge AI Accessible à Tous
+        * Contenu: Okiff démocratise l'Edge Computing et l'Edge AI pour les PME et environnements "low-tech". Défis actuels: complexité, coûts. Vision Okiff: simplicité, sécurité, puissance de l'Edge AI locale.
+        * Objectif: Informer.
+        * Visualisation: Grands titres, paragraphes concis, logo Okiff stylisé (HTML/CSS), icônes Unicode pour problème/solution.
+        * Librairie/Méthode: HTML/CSS (Tailwind), caractères Unicode.
+
+        Section 2: L'Ère de l'Intelligence en Périphérie - Marchés Clés et Croissance
+        * Contenu: Croissance exponentielle des marchés de l'Open Source, Edge Computing, et **surtout Edge AI** (logiciels et serveurs).
+        * Objectif: Informer, Comparer.
+        * Visualisations:
+            * Marché Global Edge Computing: Line Chart (Chart.js) - Projection 2025-2029 (données de e7dc135a..., $45.14Md (2025) -> $194.42Md (2029), CAGR 44.1%).
+            * Marché Logiciels Edge AI: Bar Chart (Chart.js) - $2.40Md (2025) -> $8.88Md (2031), CAGR 24.4%.
+            * Marché Serveurs Edge AI: Bar Chart (Chart.js) - $2.7Md (2024) -> $26.6Md (2034), CAGR 25.70%.
+            * Marché Logiciels Open Source: Donut Chart (Chart.js) - $41.83Md (2024) vs $48.92Md (2025).
+        * Texte Contextuel: Expliquer l'importance de l'Edge AI et comment Okiff s'y positionne.
+        * Librairie/Méthode: Chart.js (Canvas), HTML/CSS.
+
+        Section 3: Les Catalyseurs de l'Edge AI - Pourquoi Maintenant ?
+        * Contenu: Moteurs de l'adoption de l'Edge AI (IoT, Big Data local, faible latence pour IA, sécurité/confidentialité des données pour IA).
+        * Objectif: Informer, Organiser.
+        * Visualisations: Liste HTML/CSS structurée avec des icônes Unicode pour chaque moteur. Statistique clé (ex: 90% d'entreprises utilisant l'OSS).
+        * Librairie/Méthode: HTML/CSS (Tailwind), caractères Unicode.
+
+        Section 4: Okiff OS Edge - L'Intelligence "Low-Tech" en Action
+        * Contenu: Architecture d'Okiff OS Edge avec un accent sur les **Services d'IA Locale (Okiff Local AI Services)**. Plateforme Cloud, Marketplace.
+        * Objectif: Organiser, Informer.
+        * Visualisations: Diagramme de flux HTML/CSS (Tailwind) des composants d'Okiff OS Edge, mettant en évidence le module d'IA Locale. Icônes Unicode.
+        * Librairie/Méthode: HTML/CSS (Tailwind), caractères Unicode.
+
+        Section 5: L'Avantage Stratégique d'Okiff - L'Edge AI Simplifiée
+        * Contenu: Comparaison d'Okiff (simplicité, automatisation, sécurité, Edge AI intégrée) vs. solutions traditionnelles et concurrents Edge/Cloud.
+        * Objectif: Comparer, Informer.
+        * Visualisations: Tableau de comparaison HTML/CSS (Tailwind), avec une ligne spécifique pour "Capacités Edge AI".
+        * Librairie/Méthode: HTML/CSS (Tailwind).
+
+        Section 6: Public Cible - Qui Profite de l'Edge AI avec Okiff ?
+        * Contenu: PME, startups, OBNL, et industries spécifiques (ex: retail, santé, industrie légère) pouvant bénéficier de l'IA locale pour l'optimisation, la personnalisation, la maintenance prédictive.
+        * Objectif: Informer.
+        * Visualisations: Cartes avec icônes Unicode, listes de bénéfices par segment.
+        * Librairie/Méthode: HTML/CSS (Tailwind), caractères Unicode.
+
+        Section 7: L'Avenir Intelligent avec Okiff - Innovation Continue en Edge AI
+        * Contenu: Vision d'Okiff (IA explicable, apprentissage fédéré, IA adaptative), métavers, robots, drones. Durabilité.
+        * Objectif: Informer, Inspirer.
+        * Visualisations: Icônes Unicode pour XAI, Apprentissage Fédéré, etc. Énoncé de vision.
+        * Librairie/Méthode: HTML/CSS (Tailwind), caractères Unicode.
+
+        Confirmation: NI MERMAID JS NI SVG n'ont été utilisés dans cette infographie. Toutes les visualisations graphiques sont réalisées avec Chart.js (rendu Canvas) ou avec des éléments HTML/CSS stylisés via Tailwind et des caractères Unicode.
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 550px; 
+            margin-left: auto;
+            margin-right: auto;
+            height: 280px; 
+            max-height: 350px;
+            padding: 0.5rem;
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .chart-container {
+                height: 300px;
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .chart-container {
+                height: 320px; 
+            }
+        }
+
+        .stat-card {
+            background-color: #FFFFFF;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #E5E7EB; /* Light border for definition */
+        }
+        .stat-card-title {
+            font-size: 1.125rem; /* 18px */
+            font-weight: 600; /* semibold */
+            color: #111827; /* text-gray-900 */
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+        .stat-card-description {
+            font-size: 0.875rem; /* 14px */
+            color: #4B5563; /* text-gray-600 */
+            margin-bottom: 1rem; /* mb-4 */
+            line-height: 1.5;
+        }
+        .stat-value {
+            font-size: 2rem; /* 30px */
+            font-weight: 800; /* extrabold */
+            color: #F97316; /* Primary Orange */
+        }
+        .stat-label {
+            font-size: 0.875rem; /* 14px */
+            color: #4B5563; 
+            margin-top: 0.25rem; /* mt-1 */
+        }
+        .section-title {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 800; /* extrabold */
+            color: #111827; 
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .section-subtitle {
+            font-size: 1.125rem; /* 18px */
+            color: #374151; /* text-gray-700 */
+            margin-bottom: 3rem; 
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7; 
+        }
+        .okiff-flow-item {
+            background-color: #FEF3C7; /* Light Yellow from palette */
+            border: 2px solid #FDE68A; /* Darker Yellow */
+            color: #78350F; /* Brownish for contrast on yellow */
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+             padding: 1rem;
+        }
+        .okiff-flow-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+         .okiff-flow-item h4 {
+            font-weight: 700; /* bold */
+            font-size: 1rem; /* 16px */
+        }
+        .okiff-flow-item p {
+            font-size: 0.875rem; /* 14px */
+        }
+        .okiff-flow-arrow {
+            color: #F97316; /* Primary Orange */
+            font-weight: bold;
+        }
+        .nav-link {
+            transition: color 0.3s ease, background-color 0.3s ease;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+        }
+        .nav-link:hover {
+            color: #FFFFFF;
+            background-color: #F97316; /* Primary Orange */
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px); 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #F97316 0%, #F59E0B 100%); /* Orange to Yellow gradient */
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 0.75rem 1rem; /* py-3 px-4 */
+            vertical-align: top;
+        }
+        .comparison-table thead th {
+            background-color: #F3F4F6; /* bg-gray-100 */
+        }
+        .comparison-table tbody tr:nth-child(odd) {
+            background-color: #FFFFFF; /* bg-white */
+        }
+        .comparison-table tbody tr:nth-child(even) {
+            background-color: #F9FAFB; /* bg-gray-50 */
+        }
+        .unicode-icon {
+            font-size: 2.5rem; /* 40px */
+            margin-right: 0.75rem; /* mb-3 */
+        }
+    </style>
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-<nav class="sticky-nav py-3 px-4 sm:px-6">
-    <div class="container mx-auto flex flex-wrap justify-between items-center">
-        <div class="text-2xl font-bold text-blue-600">
-            Okiff<span class="text-orange-500">.</span>
-        </div>
-        <div class="space-x-2 sm:space-x-4 text-xs sm:text-sm md:text-base mt-2 sm:mt-0">
-            <a href="#vision" class="nav-link text-gray-700 font-semibold">Vision</a>
-            <a href="#marches" class="nav-link text-gray-700 font-semibold">Marchés</a>
-            <a href="#solution" class="nav-link text-gray-700 font-semibold">Solution</a>
-            <a href="#avantages" class="nav-link text-gray-700 font-semibold">Avantages</a>
-            <a href="#avenir" class="nav-link text-gray-700 font-semibold">Avenir</a>
-        </div>
-    </div>
-</nav>
-
-<header class="hero-gradient text-white py-16 md:py-24 px-6">
-    <div class="container mx-auto text-center">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Okiff : Simplifier l'Edge Computing pour Toutes les Entreprises</h1>
-        <p class="text-md sm:text-lg md:text-xl mb-10 max-w-3xl mx-auto">
-            Une révolution "low-tech" pour démocratiser l'accès à des outils puissants, sécurisés et open source, permettant aux entreprises d'innover et de croître durablement.
-        </p>
-        <div class="inline-block bg-white text-blue-600 text-4xl font-bold p-5 rounded-xl shadow-2xl">
-            O<span class="text-orange-500">k</span>iff
-        </div>
-    </div>
-</header>
-
-<main class="container mx-auto p-4 sm:p-6 md:p-10">
-
-    <section id="vision" class="my-12 md:my-20">
-        <h2 class="section-title">Le Défi : Complexité et Coûts Prohibitifs</h2>
-        <p class="section-subtitle">
-            De nombreuses PME et organisations sont freinées par la complexité et les coûts élevés des solutions logicielles. Naviguer entre de multiples outils, gérer des infrastructures informatiques lourdes et assurer la sécurité des données sont des défis majeurs, surtout sans expertise technique interne. Okiff se propose de changer cela.
-        </p>
-        <div class="grid md:grid-cols-2 gap-8 items-stretch">
-            <div class="bg-red-50 p-6 md:p-8 rounded-xl shadow-lg border-l-4 border-red-500 card-hover">
-                <h3 class="text-2xl font-bold text-red-600 mb-4 flex items-center"><span class="text-3xl mr-3">⚠️</span>Le Problème Actuel</h3>
-                <p class="text-gray-700 leading-relaxed">Les solutions propriétaires sont souvent rigides, coûteuses, et exigent une expertise pointue. Cela freine l'agilité, l'innovation et l'accès à la technologie pour beaucoup.</p>
+    <nav class="sticky-nav py-3 px-4 sm:px-6">
+        <div class="container mx-auto flex flex-wrap justify-between items-center">
+            <div class="text-3xl font-extrabold text-orange-500">
+                Okiff<span class="text-teal-500">.</span>AI
             </div>
-            <div class="bg-green-50 p-6 md:p-8 rounded-xl shadow-lg border-l-4 border-green-500 card-hover">
-                <h3 class="text-2xl font-bold text-green-600 mb-4 flex items-center"><span class="text-3xl mr-3">💡</span>La Vision Okiff</h3>
-                <p class="text-gray-700 leading-relaxed">Démocratiser l'accès à des outils professionnels puissants grâce à une plateforme Edge "low-tech", open source, unifiée, sécurisée et d'une simplicité extrême à gérer.</p>
+            <div class="space-x-2 sm:space-x-4 text-xs sm:text-sm md:text-base mt-2 sm:mt-0">
+                <a href="#vision" class="nav-link text-gray-700 font-semibold">Vision</a>
+                <a href="#marches" class="nav-link text-gray-700 font-semibold">Marchés Edge AI</a>
+                <a href="#solution" class="nav-link text-gray-700 font-semibold">Solution Okiff</a>
+                <a href="#avantages" class="nav-link text-gray-700 font-semibold">Avantages</a>
+                <a href="#avenir" class="nav-link text-gray-700 font-semibold">Avenir IA</a>
             </div>
         </div>
-        <p class="mt-10 text-center text-gray-700 max-w-3xl mx-auto text-lg">
-            Okiff, c'est plus qu'un OS : c'est un écosystème complet visant à réduire considérablement, voire éliminer, le besoin d'une expertise technique locale.
-        </p>
-    </section>
+    </nav>
 
-    <section id="marches" class="my-12 md:my-20 bg-gray-50 py-12 md:py-16 px-4 sm:px-6 rounded-xl shadow-xl">
-        <h2 class="section-title">Opportunités de Marché : Une Croissance Exponentielle</h2>
-        <p class="section-subtitle">
-            Okiff s'inscrit au cœur de marchés technologiques en pleine effervescence. La convergence de l'Edge Computing, de l'Open Source et des plateformes de gestion intégrée crée un terrain fertile pour des solutions innovantes et accessibles.
-        </p>
-        <div class="grid md:grid-cols-2 gap-8 items-stretch">
-            <div class="stat-card">
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Logiciels Open Source</h3>
-                    <p class="text-sm text-gray-600 mb-4">Le marché mondial passera de 41,83 Md$ (2024) à 48,92 Md$ (2025).</p>
-                    <div class="chart-container sm:h-64 md:h-72">
-                        <canvas id="openSourceMarketChart"></canvas>
+    <header class="hero-gradient text-white py-16 md:py-24 px-6">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">Okiff : L'Edge AI Simplifiée pour Révolutionner Votre Entreprise</h1>
+            <p class="text-md sm:text-lg md:text-xl mb-10 max-w-3xl mx-auto">
+                Démocratiser l'accès à l'intelligence artificielle locale avec une solution "low-tech", open source, sécurisée et conçue pour la croissance durable.
+            </p>
+            <div class="inline-block bg-white text-orange-500 text-4xl font-bold p-5 rounded-xl shadow-2xl transform hover:scale-105 transition-transform">
+                O<span class="text-teal-500">k</span>iff<span class="text-purple-500">.</span>AI
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 sm:p-6 md:p-10">
+
+        <section id="vision" class="my-12 md:my-20">
+            <h2 class="section-title">Le Défi : Complexité et Coûts de l'IA, Surtout en Périphérie</h2>
+            <p class="section-subtitle">
+                Les PME et les organisations sont souvent freinées par la complexité technique et les coûts élevés des solutions logicielles et d'IA. L'Edge Computing, bien que prometteur pour le traitement local et la faible latence, ajoute une couche de complexité. Okiff relève ce défi en rendant l'Edge AI accessible.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <div class="bg-red-50 p-6 md:p-8 rounded-xl shadow-lg border-l-4 border-red-500 card-hover">
+                    <h3 class="text-2xl font-bold text-red-600 mb-4 flex items-center"><span class="unicode-icon">🚧</span>Problème : L'IA Complexe & Coûteuse</h3>
+                    <p class="text-gray-700 leading-relaxed">Les solutions IA traditionnelles et l'Edge Computing peuvent être rigides, onéreux et nécessiter une expertise pointue, limitant l'innovation pour beaucoup.</p>
+                </div>
+                <div class="bg-green-50 p-6 md:p-8 rounded-xl shadow-lg border-l-4 border-green-500 card-hover">
+                    <h3 class="text-2xl font-bold text-green-600 mb-4 flex items-center"><span class="unicode-icon">💡</span>Vision Okiff : L'Edge AI Simplifiée</h3>
+                    <p class="text-gray-700 leading-relaxed">Démocratiser l'accès à l'Edge AI grâce à une plateforme "low-tech", open source, unifiée, sécurisée et extrêmement simple à gérer, même sans experts IT.</p>
+                </div>
+            </div>
+            <p class="mt-10 text-center text-gray-700 max-w-3xl mx-auto text-lg">
+                Okiff est conçu pour éliminer le besoin d'une expertise technique locale pour l'Edge AI, en rendant l'intelligence artificielle en périphérie accessible à toutes les entreprises. (Source: Étude de marché Okiff, S1.1)
+            </p>
+        </section>
+
+        <section id="marches" class="my-12 md:my-20 bg-gray-50 py-12 md:py-16 px-4 sm:px-6 rounded-xl shadow-xl">
+            <h2 class="section-title">L'Ère de l'Intelligence en Périphérie : Marchés Clés de l'Edge AI</h2>
+            <p class="section-subtitle">
+                Okiff se positionne au carrefour de marchés technologiques en croissance exponentielle. L'Edge Computing, l'Open Source et surtout l'Edge AI (logiciels et serveurs) dessinent un avenir où l'intelligence est traitée localement, rapidement et en toute sécurité.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+                <div class="stat-card">
+                    <div>
+                        <h3 class="stat-card-title">Marché Global Edge Computing</h3>
+                        <p class="stat-card-description">Une croissance fulgurante, de 45,14 Md$ en 2025 à 194,42 Md$ en 2029, illustrant la décentralisation massive du traitement des données.</p>
+                        <div class="chart-container">
+                            <canvas id="globalEdgeMarketChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="stat-value mt-4">44.1%</p>
+                        <p class="stat-label">TCAC (2025-2029)</p>
+                        <p class="text-xs text-gray-500 mt-2">Source: Étude Okiff (e7dc135a-v2), S1.2, S3.1</p>
                     </div>
                 </div>
-                <div>
-                    <p class="stat-value mt-4">16.9%</p>
-                    <p class="stat-label">TCAC Attendu</p>
-                    <p class="text-xs text-gray-500 mt-2">Source: Étude de marché Okiff (e7dc135a), S1.2 & S3.1</p>
-                </div>
-            </div>
 
-            <div class="stat-card">
-                 <div>
-                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Edge Computing</h3>
-                    <p class="text-sm text-gray-600 mb-4">Projection de 45,14 Md$ (2025) à 194,42 Md$ (2029).</p>
-                    <div class="chart-container sm:h-64 md:h-72">
-                        <canvas id="edgeComputingMarketChart"></canvas>
+                <div class="stat-card">
+                     <div>
+                        <h3 class="stat-card-title">Marché des Logiciels Edge AI</h3>
+                        <p class="stat-card-description">La demande pour l'intelligence logicielle en périphérie explose, passant de 2,40 Md$ en 2025 à 8,88 Md$ en 2031.</p>
+                        <div class="chart-container">
+                            <canvas id="edgeAISoftwareMarketChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="stat-value mt-4">24.4%</p>
+                        <p class="stat-label">TCAC (2025-2031)</p>
+                        <p class="text-xs text-gray-500 mt-2">Source: Étude Okiff (e7dc135a-v2), S1.2, S3.1</p>
                     </div>
                 </div>
-                <div>
-                    <p class="stat-value mt-4">44.1%</p>
-                    <p class="stat-label">TCAC (2025-2029)</p>
-                    <p class="text-xs text-gray-500 mt-2">Source: Étude de marché Okiff (e7dc135a), S1.2 & S3.1</p>
-                </div>
-            </div>
 
-            <div class="stat-card">
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Plateformes d'Intégration (iPaaS)</h3>
-                    <p class="text-sm text-gray-600 mb-4">Marché estimé à 15,63 Md$ en 2025.</p>
-                    <div class="chart-container sm:h-64 md:h-72">
-                        <canvas id="ipaasMarketChart"></canvas>
+                <div class="stat-card">
+                    <div>
+                        <h3 class="stat-card-title">Marché des Serveurs Edge AI</h3>
+                        <p class="stat-card-description">Les infrastructures matérielles dédiées à l'IA locale, de 2,7 Md$ en 2024 à une projection de 26,6 Md$ en 2034.</p>
+                        <div class="chart-container">
+                            <canvas id="edgeAIServersMarketChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="stat-value mt-4">25.7%</p>
+                        <p class="stat-label">TCAC (2025-2034)</p>
+                        <p class="text-xs text-gray-500 mt-2">Source: Étude Okiff (e7dc135a-v2), S1.2, S3.1</p>
                     </div>
                 </div>
-                <div>
-                    <p class="stat-value mt-4">25.9%</p>
-                    <p class="stat-label">TCAC (jusqu'en 2032)</p>
-                    <p class="text-xs text-gray-500 mt-2">Source: Étude de marché Okiff (e7dc135a), S1.2 & S3.1</p>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-700 mb-3">Gestion des Services d'Entreprise (ESM)</h3>
-                    <p class="text-sm text-gray-600 mb-4">Marché projeté à 12,8 Md$ d'ici fin 2025.</p>
-                    <div class="my-8 flex flex-col items-center justify-center flex-grow">
-                        <span class="stat-value text-5xl mb-2">12,8 Md $</span>
-                        <p class="stat-label text-lg">Taille du marché en 2025</p>
+                
+                <div class="stat-card">
+                    <div>
+                        <h3 class="stat-card-title">Marché Logiciels Open Source</h3>
+                        <p class="stat-card-description">L'Open Source continue sa progression, avec un marché passant de 41,83 Md$ en 2024 à 48,92 Md$ en 2025.</p>
+                        <div class="chart-container">
+                            <canvas id="openSourceMarketChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="stat-value mt-4">16.9%</p>
+                        <p class="stat-label">TCAC (2024-2025)</p>
+                        <p class="text-xs text-gray-500 mt-2">Source: Étude Okiff (e7dc135a-v2), S1.2, S3.1</p>
                     </div>
                 </div>
-                <div>
-                    <p class="stat-value">18-20%</p>
-                    <p class="stat-label">TCAC Estimé</p>
-                    <p class="text-xs text-gray-500 mt-2">Source: Étude de marché Okiff (e7dc135a), S1.2 & S3.1</p>
-                </div>
             </div>
-        </div>
-    </section>
+             <p class="mt-10 text-center text-gray-700 max-w-3xl mx-auto text-lg">
+                Ces chiffres soulignent l'opportunité immense pour Okiff de fournir des solutions d'Edge AI accessibles, open source et performantes.
+            </p>
+        </section>
 
-    <section id="moteurs" class="my-12 md:my-20">
-        <h2 class="section-title">Les Moteurs du Changement : Pourquoi Maintenant ?</h2>
-        <p class="section-subtitle">
-            Plusieurs tendances technologiques de fond convergent, créant un besoin urgent pour des solutions comme Okiff, capables de simplifier la complexité, de traiter les données localement et de garantir la sécurité.
-        </p>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-xl shadow-lg flex items-start space-x-4 card-hover">
-                <span class="text-4xl text-orange-500 mt-1">📡</span>
-                <div>
-                    <h3 class="font-semibold text-lg text-gray-800">Prolifération de l'IoT</h3>
-                    <p class="text-sm text-gray-600">Explosion du nombre d'appareils connectés générant des volumes massifs de données à la périphérie.</p>
+        <section id="moteurs" class="my-12 md:my-20">
+            <h2 class="section-title">Les Catalyseurs de l'Edge AI : Pourquoi Maintenant ?</h2>
+            <p class="section-subtitle">
+                L'essor de l'Edge AI est alimenté par des tendances technologiques fondamentales qui transforment la manière dont les données sont collectées, traitées et utilisées pour l'intelligence décisionnelle.
+            </p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-lg flex items-start space-x-4 card-hover">
+                    <span class="unicode-icon text-orange-500">📡</span>
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-800">Explosion de l'IoT</h3>
+                        <p class="text-sm text-gray-600">Des milliards d'appareils connectés générant des données en continu, nécessitant une analyse locale et rapide.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg flex items-start space-x-4 card-hover">
+                    <span class="unicode-icon text-teal-500">📊</span>
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-800">Big Data & Analyse Locale</h3>
+                        <p class="text-sm text-gray-600">Le besoin de traiter d'énormes volumes de données à la source pour des insights immédiats et une réduction des coûts de bande passante.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg flex items-start space-x-4 card-hover">
+                    <span class="unicode-icon text-yellow-500">🧠</span>
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-800">IA Exigeant Faible Latence</h3>
+                        <p class="text-sm text-gray-600">Applications IA critiques (robotique, véhicules autonomes, santé) demandant des décisions en millisecondes, impossibles via le cloud distant.</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg flex items-start space-x-4 card-hover">
+                    <span class="unicode-icon text-purple-500">🛡️</span>
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-800">Confidentialité & Sécurité des Données IA</h3>
+                        <p class="text-sm text-gray-600">Le traitement local des données sensibles pour l'IA minimise les risques et assure la conformité (RGPD, HIPAA).</p>
+                    </div>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-lg flex items-start space-x-4 card-hover">
+                    <span class="unicode-icon text-blue-500">💡</span>
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-800">Demande d'Autonomie et Résilience</h3>
+                        <p class="text-sm text-gray-600">Les systèmes Edge AI doivent fonctionner même avec une connectivité intermittente ou inexistante au cloud.</p>
+                    </div>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-lg flex items-start space-x-4 card-hover">
+                    <span class="unicode-icon text-green-500">📈</span>
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-800">Maturité des Technologies IA</h3>
+                        <p class="text-sm text-gray-600">Les algorithmes d'IA sont plus performants et les puces optimisées pour l'Edge rendent l'IA locale plus réalisable.</p>
+                    </div>
                 </div>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg flex items-start space-x-4 card-hover">
-                <span class="text-4xl text-blue-500 mt-1">📊</span>
-                <div>
-                    <h3 class="font-semibold text-lg text-gray-800">Big Data & Analyse en Temps Réel</h3>
-                    <p class="text-sm text-gray-600">Nécessité de traiter et d'analyser d'immenses quantités de données rapidement pour des décisions éclairées.</p>
-                </div>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg flex items-start space-x-4 card-hover">
-                <span class="text-4xl text-yellow-500 mt-1">🧠</span>
-                <div>
-                    <h3 class="font-semibold text-lg text-gray-800">Adoption de l'IA Locale (Edge AI)</h3>
-                    <p class="text-sm text-gray-600">L'IA et le Machine Learning deviennent critiques, exigeant un traitement local pour la performance et la confidentialité.</p>
-                </div>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg flex items-start space-x-4 card-hover">
-                <span class="text-4xl text-green-500 mt-1">⚡</span>
-                <div>
-                    <h3 class="font-semibold text-lg text-gray-800">Besoin Impératif de Faible Latence</h3>
-                    <p class="text-sm text-gray-600">Applications critiques (robotique, automatisation industrielle) exigeant des temps de réponse quasi instantanés.</p>
-                </div>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg flex items-start space-x-4 card-hover">
-                <span class="text-4xl text-purple-500 mt-1">🛡️</span>
-                <div>
-                    <h3 class="font-semibold text-lg text-gray-800">Souveraineté & Sécurité des Données</h3>
-                    <p class="text-sm text-gray-600">Préoccupations croissantes sur la confidentialité, la conformité réglementaire et le contrôle des données sensibles.</p>
-                </div>
-            </div>
-             <div class="bg-white p-6 rounded-xl shadow-lg flex items-start space-x-4 card-hover">
-                <span class="text-4xl text-teal-500 mt-1">🌍</span>
-                <div>
-                    <h3 class="font-semibold text-lg text-gray-800">Adoption massive de l'Open Source</h3>
-                    <p class="text-sm text-gray-600">Environ 90% des entreprises utilisent l'Open Source pour sa flexibilité et sa rentabilité.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+             <p class="mt-10 text-center text-gray-700 max-w-3xl mx-auto text-lg">
+                Okiff est au cœur de cette convergence, offrant une plateforme qui intègre nativement l'Edge AI pour répondre à ces besoins critiques.
+            </p>
+        </section>
 
-    <section id="solution" class="my-12 md:my-20 bg-gray-50 py-12 md:py-16 px-4 sm:px-6 rounded-xl shadow-xl">
-        <h2 class="section-title">La Solution Okiff : L'Edge Computing "Low-Tech" Révolutionné</h2>
-        <p class="section-subtitle">
-            Okiff propose un écosystème complet qui simplifie l'Edge Computing. Au cœur se trouve Okiff OS Edge, un système d'exploitation conçu pour l'autonomie et la facilité d'utilisation, appuyé par une plateforme cloud pour la gestion et une marketplace dynamique.
-        </p>
+        <section id="solution" class="my-12 md:my-20 bg-gray-50 py-12 md:py-16 px-4 sm:px-6 rounded-xl shadow-xl">
+            <h2 class="section-title">Okiff OS Edge : L'Intelligence "Low-Tech" en Action</h2>
+            <p class="section-subtitle">
+                Okiff révolutionne l'accès à l'Edge AI avec un système d'exploitation conçu pour la simplicité, l'autonomie et la sécurité. L'IA est intégrée nativement pour permettre un traitement intelligent des données directement à la source.
+            </p>
+            
+            <div class="mb-12">
+                <h3 class="text-2xl font-semibold text-center text-orange-600 mb-8">Composants Clés d'Okiff OS Edge avec Focus IA</h3>
+                <div class="max-w-5xl mx-auto p-4 sm:p-6 bg-white rounded-2xl shadow-2xl">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                        <div class="okiff-flow-item p-4 rounded-lg text-center shadow-md">
+                            <span class="text-4xl mb-2 block">🧠</span>
+                            <h4 class="font-bold text-md mb-1">Services d'IA Locale (Okiff Local AI)</h4>
+                            <p class="text-xs">Exécution optimisée de modèles ML en périphérie. Interface standardisée pour déploiement, inférence et mises à jour. Confidentialité et temps réel garantis.</p>
+                        </div>
+                        <div class="hidden sm:flex items-center justify-center text-4xl okiff-flow-arrow transform rotate-90 sm:rotate-0">→</div>
+                        <div class="okiff-flow-item p-4 rounded-lg text-center shadow-md">
+                            <span class="text-4xl mb-2 block">⚙️</span>
+                            <h4 class="font-bold text-md mb-1">Noyau Autogéré & Optimisé</h4>
+                            <p class="text-xs">Auto-configuration et auto-réparation, gestion efficiente des ressources pour les charges de travail IA.</p>
+                        </div>
+                        <div class="hidden lg:flex items-center justify-center text-4xl okiff-flow-arrow transform rotate-90 sm:rotate-0">→</div>
+                        <div class="okiff-flow-item p-4 rounded-lg text-center shadow-md mt-0 sm:mt-4 lg:mt-0">
+                            <span class="text-4xl mb-2 block">📦</span>
+                            <h4 class="font-bold text-md mb-1">Gestionnaire d'Apps Autonome</h4>
+                            <p class="text-xs">Déploiement "1-clic" d'applications, y compris celles embarquant des modèles d'IA, avec isolation sécurisée.</p>
+                        </div>
+                        <div class="sm:col-span-2 lg:col-span-1 flex items-center justify-center text-4xl okiff-flow-arrow mt-4 sm:mt-0 transform rotate-90 sm:rotate-0">↓</div>
+                        <div class="okiff-flow-item p-4 rounded-lg text-center shadow-md mt-4 sm:mt-0">
+                            <span class="text-4xl mb-2 block">💾</span>
+                            <h4 class="font-bold text-md mb-1">Services de Données Unifiés</h4>
+                            <p class="text-xs">Stockage local optimisé pour les données d'entraînement et d'inférence IA, synchronisation cloud sécurisée.</p>
+                        </div>
+                        <div class="hidden lg:flex items-center justify-center text-4xl okiff-flow-arrow transform rotate-90 sm:rotate-0">←</div>
+                         <div class="okiff-flow-item p-4 rounded-lg text-center shadow-md mt-4 sm:mt-0">
+                            <span class="text-4xl mb-2 block">🛡️</span>
+                            <h4 class="font-bold text-md mb-1">Module Sécurité Autonome</h4>
+                            <p class="text-xs">Protection proactive pour les systèmes et données IA, détection d'anomalies basée sur l'IA.</p>
+                        </div>
+                         <div class="hidden sm:flex items-center justify-center text-4xl okiff-flow-arrow transform -rotate-90 sm:rotate-180 sm:order-first lg:order-none">↑</div>
+                         <div class="okiff-flow-item p-4 rounded-lg text-center shadow-md mt-4 sm:mt-0">
+                            <span class="text-4xl mb-2 block">📡</span>
+                            <h4 class="font-bold text-md mb-1">Agent Communication Intelligent</h4>
+                            <p class="text-xs">Transmission sécurisée et optimisée des données et modèles IA, même avec connectivité limitée.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mt-12">
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg card-hover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center flex items-center justify-center"><span class="unicode-icon text-teal-500">☁️</span>Plateforme Cloud Okiff</h3>
+                    <p class="text-gray-600 leading-relaxed">Hub centralisé pour le déploiement "Zero-Touch" des dispositifs Edge, la gestion des mises à jour (y compris les modèles IA), la surveillance des performances IA et la configuration des politiques de sécurité.</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg card-hover">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center flex items-center justify-center"><span class="unicode-icon text-purple-500">🛒</span>Marketplace Okiff pour l'IA</h3>
+                    <p class="text-gray-600 leading-relaxed">Un écosystème offrant des applications Edge AI prêtes à l'emploi, des modèles IA pré-entraînés, des services d'experts en Edge AI, et des solutions pour étendre les capacités d'IA de votre plateforme Okiff.</p>
+                </div>
+            </div>
+             <p class="mt-10 text-center text-gray-700 max-w-3xl mx-auto text-lg">
+                Okiff OS Edge, avec son Local AI Service, est la fondation d'une Edge Intelligence accessible et puissante. (Source: Étude Okiff, S2.1, S2.3)
+            </p>
+        </section>
+
+        <section id="avantages" class="my-12 md:my-20">
+            <h2 class="section-title">L'Avantage Stratégique d'Okiff : L'Edge AI Simplifiée</h2>
+            <p class="section-subtitle">
+               Okiff se distingue par son approche unique de l'Edge AI : la rendre simple, accessible et intégrée nativement. Cela offre un avantage concurrentiel majeur par rapport aux solutions traditionnelles et aux autres plateformes Edge.
+            </p>
+            <div class="bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl overflow-x-auto">
+                <table class="w-full min-w-[650px] text-left comparison-table">
+                    <thead>
+                        <tr>
+                            <th class="font-semibold text-gray-700 text-sm sm:text-base">Caractéristique Clé</th>
+                            <th class="font-semibold text-orange-600 text-sm sm:text-base">Okiff avec Edge AI</th>
+                            <th class="font-semibold text-gray-500 text-sm sm:text-base">Solutions Edge/Cloud Traditionnelles</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr>
+                            <td class="text-gray-700">Capacités Edge AI</td>
+                            <td class="text-green-600 font-medium">✅ Intégrées Natif, Optimisées, "Low-Tech"</td>
+                            <td class="text-red-600">❌ Souvent en Add-on, Complexes, Cloud-Dépendantes</td>
+                        </tr>
+                        <tr>
+                            <td class="text-gray-700">Simplicité de Déploiement IA</td>
+                            <td class="text-green-600 font-medium">✅ "Zero-Touch" pour OS et Apps IA</td>
+                            <td class="text-red-600">❌ Configuration Manuelle, Expertise Requise</td>
+                        </tr>
+                        <tr>
+                            <td class="text-gray-700">Coût Total de Possession (TCO) pour l'IA</td>
+                            <td class="text-green-600 font-medium">✅ Optimisé (Open Source, Moins d'infra Cloud IA)</td>
+                            <td class="text-red-600">❌ Élevé (Licences IA, Coûts Inférence Cloud)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-gray-700">Latence pour Inférence IA</td>
+                            <td class="text-green-600 font-medium">✅ Minimale (Traitement Local)</td>
+                            <td class="text-red-600">❌ Variable, Dépendante du Réseau/Cloud</td>
+                        </tr>
+                        <tr>
+                            <td class="text-gray-700">Confidentialité des Données IA</td>
+                            <td class="text-green-600 font-medium">✅ Maximale (Données restent en local)</td>
+                            <td class="text-red-600">❌ Risques liés au transfert Cloud</td>
+                        </tr>
+                         <tr>
+                            <td class="text-gray-700">Autonomie et Résilience IA</td>
+                            <td class="text-green-600 font-medium">✅ Fonctionnement IA hors-ligne possible</td>
+                            <td class="text-red-600">❌ Dépendance à la connectivité Cloud pour l'IA</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+             <p class="mt-10 text-center text-gray-700 max-w-3xl mx-auto text-lg">
+                L'intégration native de l'Edge AI par Okiff, combinée à son approche "low-tech", change la donne pour les entreprises cherchant à exploiter l'IA sans la complexité habituelle. (Source: Analyse Okiff).
+            </p>
+        </section>
         
-        <div class="mb-12">
-            <h3 class="text-2xl font-semibold text-center text-blue-600 mb-8">Okiff OS Edge : Simplicité, Autonomie, Sécurité</h3>
-            <div class="max-w-5xl mx-auto p-4 sm:p-6 bg-white rounded-2xl shadow-2xl">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 text-sm">
-                    <div class="okiff-flow-item p-4 rounded-lg text-center shadow-md">
-                        <span class="text-4xl mb-2 block">⚙️</span>
-                        <h4 class="font-bold text-md mb-1">Noyau Autogéré</h4>
-                        <p class="text-xs">Auto-configuration, optimisation, réparation pour une stabilité maximale.</p>
+        <section id="public-cible" class="my-12 md:my-20 bg-gray-50 py-12 md:py-16 px-4 sm:px-6 rounded-xl shadow-xl">
+            <h2 class="section-title">Public Cible : Qui Profite de l'Edge AI avec Okiff ?</h2>
+            <p class="section-subtitle">
+                L'Edge AI simplifiée par Okiff ouvre des perspectives nouvelles pour une multitude d'organisations, en particulier celles qui étaient auparavant exclues de l'IA en raison des barrières techniques ou financières.
+            </p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="text-center mb-4">
+                        <span class="unicode-icon text-orange-500">🏭</span>
+                        <h3 class="text-xl font-semibold mt-4 text-gray-800">PME (Industrie, Retail, Services)</h3>
                     </div>
-                    <div class="hidden sm:flex items-center justify-center text-3xl okiff-flow-arrow">→</div>
-                     <div class="okiff-flow-item p-4 rounded-lg text-center shadow-md">
-                        <span class="text-4xl mb-2 block">🧩</span>
-                        <h4 class="font-bold text-md mb-1">Couche d'Abstraction (HAL)</h4>
-                        <p class="text-xs">Compatibilité matérielle étendue, déploiement simplifié.</p>
-                    </div>
-                    <div class="hidden lg:flex items-center justify-center text-3xl okiff-flow-arrow">→</div>
-                    <div class="okiff-flow-item p-4 rounded-lg text-center shadow-md mt-0 sm:mt-4 lg:mt-0">
-                        <span class="text-4xl mb-2 block">📦</span>
-                        <h4 class="font-bold text-md mb-1">Gestionnaire d'Apps Autonome</h4>
-                        <p class="text-xs">Déploiement "1-clic", mises à jour, isolation sécurisée des apps.</p>
-                    </div>
-                    <div class="sm:col-span-2 lg:col-span-1 flex items-center justify-center text-3xl okiff-flow-arrow mt-4 sm:mt-0">↓</div>
-                    <div class="okiff-flow-item p-4 rounded-lg text-center shadow-md mt-4 sm:mt-0">
-                        <span class="text-4xl mb-2 block">🧠</span>
-                        <h4 class="font-bold text-md mb-1">Services d'IA Locale</h4>
-                        <p class="text-xs">Traitement en temps réel, confidentialité, apps intelligentes.</p>
-                    </div>
-                     <div class="hidden lg:flex items-center justify-center text-3xl okiff-flow-arrow">←</div>
-                    <div class="okiff-flow-item p-4 rounded-lg text-center shadow-md mt-4 sm:mt-0">
-                        <span class="text-4xl mb-2 block">🛡️</span>
-                        <h4 class="font-bold text-md mb-1">Module Sécurité Autonome</h4>
-                        <p class="text-xs">Protection pro-active, détection d'intrusion, chiffrement.</p>
-                    </div>
-                     <div class="hidden sm:flex items-center justify-center text-3xl okiff-flow-arrow  sm:order-first lg:order-none">↑</div>
-                     <div class="okiff-flow-item p-4 rounded-lg text-center shadow-md mt-4 sm:mt-0">
-                        <span class="text-4xl mb-2 block">📡</span>
-                        <h4 class="font-bold text-md mb-1">Agent Communication Intelligent</h4>
-                        <p class="text-xs">Connexion fiable et optimisée, même intermittente.</p>
-                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Optimisation des processus, maintenance prédictive, personnalisation client grâce à l'IA locale, sans nécessiter une équipe de data scientists.</p>
+                    <ul class="list-disc list-inside text-sm text-gray-600 space-y-1 pl-2">
+                        <li>Analyse vidéo pour contrôle qualité (industrie).</li>
+                        <li>Recommandations personnalisées en magasin (retail).</li>
+                        <li>Optimisation des tournées (services).</li>
+                    </ul>
                 </div>
-                 <div class="mt-6 okiff-flow-item p-4 rounded-lg text-center shadow-md sm:col-span-2 lg:col-span-3">
-                    <span class="text-4xl mb-2 block">💾</span>
-                    <h4 class="font-bold text-md mb-1">Services de Données Unifiés</h4>
-                    <p class="text-xs">Stockage local optimisé, synchronisation cloud sécurisée, accès simplifié pour les apps.</p>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                     <div class="text-center mb-4">
+                        <span class="unicode-icon text-teal-500">🚀</span>
+                        <h3 class="text-xl font-semibold mt-4 text-gray-800">Startups Innovantes</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Développement rapide de produits et services basés sur l'Edge AI, avec une infrastructure légère et des coûts maîtrisés.</p>
+                     <ul class="list-disc list-inside text-sm text-gray-600 space-y-1 pl-2">
+                        <li>Création de dispositifs IoT intelligents.</li>
+                        <li>Solutions d'analyse de données en temps réel.</li>
+                        <li>Applications mobiles avec capacités IA offline.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                     <div class="text-center mb-4">
+                        <span class="unicode-icon text-yellow-500">❤️</span>
+                        <h3 class="text-xl font-semibold mt-4 text-gray-800">Secteur de la Santé (Cliniques, EHPAD)</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Analyse locale de données médicales pour aide au diagnostic, surveillance des patients, gestion optimisée des appareils, tout en garantissant la confidentialité.</p>
+                     <ul class="list-disc list-inside text-sm text-gray-600 space-y-1 pl-2">
+                        <li>Détection d'anomalies sur imagerie médicale.</li>
+                        <li>Alertes intelligentes pour la surveillance des signes vitaux.</li>
+                        <li>Optimisation des flux de travail du personnel.</li>
+                    </ul>
                 </div>
             </div>
-        </div>
+            <p class="mt-10 text-center text-gray-700 max-w-3xl mx-auto text-lg">
+                Okiff rend l'Edge AI pertinent et accessible pour une nouvelle vague d'utilisateurs et d'applications.
+            </p>
+        </section>
 
-        <div class="grid md:grid-cols-2 gap-8 mt-12">
-            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg card-hover">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center flex items-center justify-center"><span class="text-3xl mr-3">☁️</span>Plateforme Cloud Okiff</h3>
-                <p class="text-gray-600 leading-relaxed">Un hub centralisé pour le déploiement "Zero-Touch", la gestion des mises à jour automatisées (avec rollback A/B), la surveillance globale et la configuration centralisée des politiques de sécurité pour tous vos dispositifs Edge.</p>
-            </div>
-            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg card-hover">
-                <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center flex items-center justify-center"><span class="text-3xl mr-3">🛒</span>Marketplace Okiff</h3>
-                <p class="text-gray-600 leading-relaxed">Un écosystème dynamique offrant une sélection rigoureusement choisie d'applications open source, de plugins, de services d'experts certifiés et de fournitures pour étendre et personnaliser votre expérience Okiff.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="avantages" class="my-12 md:my-20">
-        <h2 class="section-title">L'Avantage Concurrentiel d'Okiff : Se Distinguer Clairement</h2>
-        <p class="section-subtitle">
-           Okiff offre une alternative convaincante aux solutions existantes grâce à une combinaison unique de simplicité, de puissance, de sécurité et d'ouverture, spécialement conçue pour les environnements "low-tech".
-        </p>
-        <div class="bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl overflow-x-auto">
-            <table class="w-full min-w-[600px] text-left">
-                <thead>
-                    <tr class="border-b-2 border-gray-300">
-                        <th class="py-4 px-3 sm:px-4 font-semibold text-gray-700 text-sm sm:text-base">Caractéristique Clé</th>
-                        <th class="py-4 px-3 sm:px-4 font-semibold text-blue-600 text-sm sm:text-base">Okiff</th>
-                        <th class="py-4 px-3 sm:px-4 font-semibold text-gray-500 text-sm sm:text-base">Solutions Traditionnelles/Propriétaires</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                    <tr>
-                        <td class="py-4 px-3 sm:px-4 text-gray-700">Complexité de Gestion</td>
-                        <td class="py-4 px-3 sm:px-4 text-green-600 font-medium">⭐ Minimale (Automatisation, "Low-Tech")</td>
-                        <td class="py-4 px-3 sm:px-4 text-red-600">❌ Élevée</td>
-                    </tr>
-                    <tr class="bg-gray-50">
-                        <td class="py-4 px-3 sm:px-4 text-gray-700">Coût Total de Possession (TCO)</td>
-                        <td class="py-4 px-3 sm:px-4 text-green-600 font-medium">⭐ Optimisé (Open Source, Moins d'expertise)</td>
-                        <td class="py-4 px-3 sm:px-4 text-red-600">❌ Souvent Élevé (Licences, Maintenance)</td>
-                    </tr>
-                    <tr>
-                        <td class="py-4 px-3 sm:px-4 text-gray-700">Expertise IT Requise</td>
-                        <td class="py-4 px-3 sm:px-4 text-green-600 font-medium">⭐ Minimale / Nulle pour l'utilisateur</td>
-                        <td class="py-4 px-3 sm:px-4 text-red-600">❌ Considérable / Spécialisée</td>
-                    </tr>
-                    <tr class="bg-gray-50">
-                        <td class="py-4 px-3 sm:px-4 text-gray-700">Flexibilité & Personnalisation</td>
-                        <td class="py-4 px-3 sm:px-4 text-green-600 font-medium">⭐ Très Élevée (Open Source, Modulaire)</td>
-                        <td class="py-4 px-3 sm:px-4 text-red-600">❌ Limitée / Verrouillage Fournisseur</td>
-                    </tr>
-                    <tr>
-                        <td class="py-4 px-3 sm:px-4 text-gray-700">Sécurité & Contrôle des Données</td>
-                        <td class="py-4 px-3 sm:px-4 text-green-600 font-medium">⭐ Fort (Traitement local, Sécurité intégrée)</td>
-                        <td class="py-4 px-3 sm:px-4 text-red-600">❌ Variable, Dépendance Cloud fréquente</td>
-                    </tr>
-                     <tr class="bg-gray-50">
-                        <td class="py-4 px-3 sm:px-4 text-gray-700">Adaptabilité à l'Edge</td>
-                        <td class="py-4 px-3 sm:px-4 text-green-600 font-medium">⭐ Natif (Conçu pour l'Edge, résilient hors ligne)</td>
-                        <td class="py-4 px-3 sm:px-4 text-red-600">❌ Souvent une adaptation, peut manquer de robustesse</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-    
-    <section id="public-cible" class="my-12 md:my-20 bg-gray-50 py-12 md:py-16 px-4 sm:px-6 rounded-xl shadow-xl">
-        <h2 class="section-title">Public Cible d'Okiff : Qui en Bénéficie le Plus ?</h2>
-        <p class="section-subtitle">
-            Okiff est conçu pour être adaptable, mais sa valeur est particulièrement transformatrice pour les organisations cherchant à moderniser leurs opérations sans la complexité et les coûts associés aux solutions IT traditionnelles.
-        </p>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-                <div class="text-center mb-4">
-                    <span class="text-6xl text-blue-500">🏢</span>
-                    <h3 class="text-xl font-semibold mt-4 text-gray-800">Petites et Moyennes Entreprises (PME)</h3>
+        <section id="avenir" class="my-12 md:my-20 text-center">
+            <h2 class="section-title">L'Avenir Intelligent avec Okiff : Innovation Continue en Edge AI</h2>
+            <p class="section-subtitle mb-10">
+                La vision d'Okiff va au-delà de l'Edge AI actuelle. Nous nous engageons à une innovation continue pour rendre l'IA en périphérie encore plus puissante, éthique, et adaptée aux défis de demain.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                <div class="stat-card bg-purple-50 text-purple-700 p-6 border-t-4 border-purple-500">
+                    <span class="text-5xl">🔎</span>
+                    <h3 class="text-xl font-semibold my-3">IA Explicable (XAI)</h3>
+                    <p class="text-sm">Rendre les décisions de l'Edge AI transparentes et compréhensibles pour la confiance et la conformité. (Source: Étude Okiff, S2.3)</p>
                 </div>
-                <p class="text-sm text-gray-600 mb-3">Souvent dépourvues de ressources IT dédiées et de budgets extensibles.</p>
-                <ul class="list-disc list-inside text-sm text-gray-600 space-y-1 pl-2">
-                    <li>Recherchent des solutions rentables et faciles à gérer.</li>
-                    <li>Valorisation de la simplicité d'utilisation et de l'automatisation.</li>
-                    <li>Importance cruciale de la sécurité et de la conformité des données.</li>
-                </ul>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-                 <div class="text-center mb-4">
-                    <span class="text-6xl text-orange-500">🚀</span>
-                    <h3 class="text-xl font-semibold mt-4 text-gray-800">Startups & Entreprises en Croissance</h3>
+                <div class="stat-card bg-teal-50 text-teal-700 p-6 border-t-4 border-teal-500">
+                    <span class="text-5xl">🤝</span>
+                    <h3 class="text-xl font-semibold my-3">Apprentissage Fédéré</h3>
+                    <p class="text-sm">Entraîner des modèles IA collaboratifs sur des données distribuées tout en préservant la confidentialité. (Source: Étude Okiff, S2.3)</p>
                 </div>
-                <p class="text-sm text-gray-600 mb-3">Nécessitent agilité, scalabilité et capacité d'innovation rapide.</p>
-                 <ul class="list-disc list-inside text-sm text-gray-600 space-y-1 pl-2">
-                    <li>Besoin de solutions flexibles évoluant avec leurs activités.</li>
-                    <li>Accès à des technologies avancées sans investissements initiaux massifs.</li>
-                    <li>Capacité à se concentrer sur le cœur de métier, pas sur la gestion IT.</li>
-                </ul>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
-                 <div class="text-center mb-4">
-                    <span class="text-6xl text-green-500">🌍</span>
-                    <h3 class="text-xl font-semibold mt-4 text-gray-800">Organisations à But Non Lucratif (OBNL)</h3>
+                <div class="stat-card bg-yellow-50 text-yellow-700 p-6 border-t-4 border-yellow-500">
+                    <span class="text-5xl">🔄</span>
+                    <h3 class="text-xl font-semibold my-3">IA Adaptative</h3>
+                    <p class="text-sm">Permettre aux modèles Edge AI de s'adapter dynamiquement aux nouveaux contextes et données en temps réel. (Source: Étude Okiff, S2.3)</p>
                 </div>
-                <p class="text-sm text-gray-600 mb-3">Opèrent souvent avec des budgets limités et des ressources techniques restreintes.</p>
-                 <ul class="list-disc list-inside text-sm text-gray-600 space-y-1 pl-2">
-                    <li>Accès à des outils professionnels à faible coût (Okiff Download).</li>
-                    <li>Solutions pour maximiser l'impact avec des ressources limitées.</li>
-                    <li>Valorisation de la collaboration et du partage sécurisé d'informations.</li>
-                </ul>
             </div>
-        </div>
-    </section>
+            <p class="text-lg font-semibold text-gray-800 mb-6">Préparer l'Edge pour les Interactions de Demain :</p>
+            <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-5xl text-gray-600">
+                <div class="flex flex-col items-center"><span class="mb-1">🕶️</span><p class="text-xs font-medium">Métavers & XR</p></div>
+                <div class="flex flex-col items-center"><span class="mb-1">🤖</span><p class="text-xs font-medium">Robotique Autonome</p></div>
+                <div class="flex flex-col items-center"><span class="mb-1">🚁</span><p class="text-xs font-medium">Drones Intelligents</p></div>
+                <div class="flex flex-col items-center"><span class="mb-1">🌱</span><p class="text-xs font-medium">IA Durable</p></div>
+            </div>
+             <p class="mt-10 text-center text-gray-700 max-w-3xl mx-auto text-lg">
+                Okiff s'engage à construire un avenir où l'Edge AI est un moteur d'innovation responsable et accessible à tous.
+            </p>
+        </section>
+    </main>
 
-    <section id="avenir" class="my-12 md:my-20 text-center">
-        <h2 class="section-title">L'Avenir avec Okiff : Innovation Durable et Responsable</h2>
-        <p class="section-subtitle mb-10">
-            Okiff ne se contente pas de résoudre les défis d'aujourd'hui. Nous bâtissons une plateforme pour demain, en démocratisant la technologie, en favorisant la collaboration et en promouvant une croissance durable et éthique.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-            <div class="stat-card bg-blue-50 text-blue-700 p-6 border-t-4 border-blue-500">
-                <span class="text-5xl">💡</span>
-                <h3 class="text-xl font-semibold my-3">Démocratisation Technologique</h3>
-                <p class="text-sm">Rendre les outils avancés accessibles à tous, indépendamment de la taille ou de l'expertise technique.</p>
-            </div>
-            <div class="stat-card bg-orange-50 text-orange-700 p-6 border-t-4 border-orange-500">
-                <span class="text-5xl">🤝</span>
-                <h3 class="text-xl font-semibold my-3">Collaboration & Communauté</h3>
-                <p class="text-sm">Construire un écosystème ouvert où l'innovation est propulsée par la contribution collective et l'intelligence partagée.</p>
-            </div>
-            <div class="stat-card bg-green-50 text-green-700 p-6 border-t-4 border-green-500">
-                <span class="text-5xl">🌱</span>
-                <h3 class="text-xl font-semibold my-3">Croissance Durable & Éthique</h3>
-                <p class="text-sm">Promouvoir des pratiques responsables, minimiser l'impact IT et intégrer une IA éthique et explicable.</p>
-            </div>
-        </div>
-        <p class="text-lg font-semibold text-gray-800 mb-6">Préparé pour les technologies de demain :</p>
-        <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-5xl text-gray-600">
-            <div class="flex flex-col items-center"><span class="mb-1">🤖</span><p class="text-xs font-medium">IA Avancée</p></div>
-            <div class="flex flex-col items-center"><span class="mb-1">🌐</span><p class="text-xs font-medium">Métavers</p></div>
-            <div class="flex flex-col items-center"><span class="mb-1">🛰️</span><p class="text-xs font-medium">Drones & Robots</p></div>
-            <div class="flex flex-col items-center"><span class="mb-1">🛡️</span><p class="text-xs font-medium">Sécurité Quantique</p></div>
-             <div class="flex flex-col items-center"><span class="mb-1">🔗</span><p class="text-xs font-medium">Apprentissage Fédéré</p></div>
-        </div>
-    </section>
-</main>
+    <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+        <p>&copy; <span id="currentYearOkiff"></span> Okiff. Tous droits réservés.</p>
+        <p class="text-xs mt-1">Infographie basée sur l'Étude de Marché et Positionnement Stratégique Okiff (ID: e7dc135a-bc8b-45d5-93c5-f3ca81687f3c-v2).</p>
+        <script>document.getElementById('currentYearOkiff').textContent = new Date().getFullYear();</script>
+    </footer>
 
-<footer class="bg-gray-900 text-gray-400 py-10 text-center">
-    <p>&copy; <span id="currentYear"></span> Okiff. Tous droits réservés.</p>
-    <p class="text-xs mt-1">Une solution Edge Computing low-tech pour un avenir numérique accessible et durable.</p>
-    <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
-</footer>
-
-<script>
-    const processLabels = (labels) => {
-        return labels.map(label => {
-            if (typeof label === 'string' && label.length > 16) {
-                const words = label.split(' ');
-                const newLabel = [];
-                let currentLine = '';
-                words.forEach(word => {
-                    if ((currentLine + word).length > 16 && currentLine.length > 0) {
-                        newLabel.push(currentLine.trim());
-                        currentLine = word + ' ';
-                    } else {
-                        currentLine += word + ' ';
+    <script>
+        const processLabelsOkiff = (labels) => {
+            return labels.map(label => {
+                if (typeof label === 'string' && label.length > 16) {
+                    const words = label.split(' ');
+                    const newLabel = [];
+                    let currentLine = '';
+                    words.forEach(word => {
+                        if ((currentLine + word).length > 16 && currentLine.length > 0) {
+                            newLabel.push(currentLine.trim());
+                            currentLine = word + ' ';
+                        } else {
+                            currentLine += word + ' ';
+                        }
+                    });
+                    if (currentLine.trim().length > 0) {
+                         newLabel.push(currentLine.trim());
                     }
-                });
-                if (currentLine.trim().length > 0) {
-                     newLabel.push(currentLine.trim());
+                    return newLabel.length > 0 ? newLabel : [label];
                 }
-                return newLabel.length > 0 ? newLabel : [label];
+                return label;
+            });
+        };
+
+        const tooltipTitleCallbackOkiff = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
             }
             return label;
-        });
-    };
+        };
+        
+        const okiffPrimaryOrange = '#F97316';
+        const okiffSecondaryTeal = '#14B8A6';
+        const okiffAccentYellow = '#FACC15';
+        const okiffAccentPurple = '#A855F7';
+        const okiffSupportBlue = '#3B82F6';
+        const okiffLightGray = '#E5E7EB';
+        const okiffMediumGray = '#6B7280';
+        const okiffDarkGray = '#1F2937';
 
-    const tooltipTitleCallback = (tooltipItems) => {
-        const item = tooltipItems[0];
-        let label = item.chart.data.labels[item.dataIndex];
-        if (Array.isArray(label)) {
-            return label.join(' ');
-        }
-        return label;
-    };
-    
-    const primaryBlue = '#3B82F6';
-    const accentOrange = '#F97316';
-    const accentYellow = '#EAB308';
-    const lightGray = '#E5E7EB';
-    const mediumGray = '#6B7280';
-
-    const commonChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                labels: {
-                    color: mediumGray,
-                    font: { size: 10 }
-                }
-            },
-            tooltip: {
-                callbacks: {
-                    title: tooltipTitleCallback
-                },
-                backgroundColor: 'rgba(31, 41, 55, 0.9)', // bg-gray-800
-                titleColor: '#FFFFFF',
-                bodyColor: '#E5E7EB', // text-gray-200
-                borderColor: '#4B5563', // border-gray-600
-                borderWidth: 1,
-                padding: 10,
-                cornerRadius: 6,
-                boxPadding: 3 
-            }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                ticks: { color: mediumGray, font: {size: 10} },
-                grid: { color: lightGray } 
-            },
-            x: {
-                ticks: { color: mediumGray, font: {size: 10} },
-                grid: { display: false }
-            }
-        },
-        animation: {
-            duration: 1000,
-            easing: 'easeInOutQuart'
-        }
-    };
-    
-    // Chart 1: Open Source Market
-    const openSourceMarketCtx = document.getElementById('openSourceMarketChart').getContext('2d');
-    if (openSourceMarketCtx) {
-        new Chart(openSourceMarketCtx, {
-            type: 'bar',
-            data: {
-                labels: processLabels(['2024', '2025']),
-                datasets: [{
-                    label: 'Taille du Marché (Milliards $)',
-                    data: [41.83, 48.92],
-                    backgroundColor: [primaryBlue, accentOrange],
-                    borderColor: [primaryBlue, accentOrange],
-                    borderWidth: 1,
-                    borderRadius: 4,
-                    barPercentage: 0.7,
-                    categoryPercentage: 0.8
-                }]
-            },
-            options: {...commonChartOptions}
-        });
-    }
-
-    // Chart 2: Edge Computing Market
-    const edgeComputingMarketCtx = document.getElementById('edgeComputingMarketChart').getContext('2d');
-    if (edgeComputingMarketCtx) {
-        new Chart(edgeComputingMarketCtx, {
-            type: 'line',
-            data: {
-                labels: processLabels(['2025', '2026', '2027', '2028', '2029']),
-                datasets: [{
-                    label: 'Projection du Marché (Milliards $)',
-                    data: [45.14, 65.05, 93.74, 135.08, 194.42],
-                    backgroundColor: 'rgba(59, 130, 246, 0.2)', // primaryBlue with opacity
-                    borderColor: primaryBlue,
-                    tension: 0.4, // Smoother line
-                    fill: true,
-                    pointBackgroundColor: primaryBlue,
-                    pointBorderColor: '#FFFFFF',
-                    pointHoverBackgroundColor: '#FFFFFF',
-                    pointHoverBorderColor: primaryBlue,
-                    pointRadius: 4,
-                    pointHoverRadius: 6
-                }]
-            },
-            options: {...commonChartOptions}
-        });
-    }
-
-    // Chart 3: iPaaS Market
-    const ipaasMarketCtx = document.getElementById('ipaasMarketChart').getContext('2d');
-    if (ipaasMarketCtx) {
-        new Chart(ipaasMarketCtx, {
-            type: 'doughnut',
-            data: {
-                labels: processLabels(['Marché iPaaS 2025 (15,63 Md$)', 'Autres segments (conceptuel)']),
-                datasets: [{
-                    label: 'Marché iPaaS (Md $)',
-                    data: [15.63, 7.5], // conceptual other segment
-                    backgroundColor: [primaryBlue, lightGray],
-                    hoverBackgroundColor: [accentOrange, '#D1D5DB'],
-                    borderColor: '#FFFFFF',
-                    borderWidth: 2,
-                    hoverOffset: 8
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '70%',
-                plugins: {
-                    legend: { display: true, position: 'bottom', labels: {color: mediumGray, font: {size: 10}, boxWidth:12} },
-                    tooltip: { 
-                        callbacks: { 
-                            title: tooltipTitleCallback,
-                            label: function(context) {
-                                let label = context.dataset.label || '';
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed !== null) {
-                                    label += context.parsed.toLocaleString() + ' Md$';
-                                }
-                                return label;
-                            }
-                        },
-                        backgroundColor: 'rgba(31, 41, 55, 0.9)',
-                        titleColor: '#FFFFFF',
-                        bodyColor: '#E5E7EB',
+        const commonChartOptionsOkiff = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: okiffMediumGray,
+                        font: { size: 10, family: 'Inter' }
                     }
                 },
-                animation: commonChartOptions.animation
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallbackOkiff
+                    },
+                    backgroundColor: 'rgba(31, 41, 55, 0.9)',
+                    titleColor: '#FFFFFF',
+                    titleFont: { family: 'Inter', weight: 'bold'},
+                    bodyColor: '#E5E7EB',
+                    bodyFont: { family: 'Inter'},
+                    borderColor: '#4B5563',
+                    borderWidth: 1,
+                    padding: 10,
+                    cornerRadius: 6,
+                    boxPadding: 3 
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: okiffMediumGray, font: {size: 10, family: 'Inter'} },
+                    grid: { color: okiffLightGray } 
+                },
+                x: {
+                    ticks: { color: okiffMediumGray, font: {size: 10, family: 'Inter'} },
+                    grid: { display: false }
+                }
+            },
+            animation: {
+                duration: 800,
+                easing: 'easeOutCubic'
             }
-        });
-    }
+        };
+        
+        // Chart 1: Global Edge Computing Market
+        const globalEdgeMarketCtx = document.getElementById('globalEdgeMarketChart')?.getContext('2d');
+        if (globalEdgeMarketCtx) {
+            new Chart(globalEdgeMarketCtx, {
+                type: 'line',
+                data: {
+                    labels: processLabelsOkiff(['2025', '2026', '2027', '2028', '2029']),
+                    datasets: [{
+                        label: 'Projection Marché Global Edge (Md $)',
+                        data: [45.14, 65.05, 93.74, 135.08, 194.42], // Source: Étude Okiff S1.2
+                        backgroundColor: 'rgba(249, 115, 22, 0.2)', // okiffPrimaryOrange with opacity
+                        borderColor: okiffPrimaryOrange,
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: okiffPrimaryOrange,
+                        pointBorderColor: '#FFFFFF',
+                    }]
+                },
+                options: {...commonChartOptionsOkiff}
+            });
+        }
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                 const offsetTop = targetElement.offsetTop - 80; // Adjust for sticky nav
-                 window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+        // Chart 2: Edge AI Software Market
+        const edgeAISoftwareMarketCtx = document.getElementById('edgeAISoftwareMarketChart')?.getContext('2d');
+        if (edgeAISoftwareMarketCtx) {
+            new Chart(edgeAISoftwareMarketCtx, {
+                type: 'bar',
+                data: {
+                    labels: processLabelsOkiff(['2025', '2031']),
+                    datasets: [{
+                        label: 'Marché Logiciels Edge AI (Md $)',
+                        data: [2.40, 8.88], // Source: Étude Okiff S1.2
+                        backgroundColor: [okiffSecondaryTeal, okiffAccentPurple],
+                        borderColor: [okiffSecondaryTeal, okiffAccentPurple],
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        barPercentage: 0.6,
+                    }]
+                },
+                options: {...commonChartOptionsOkiff}
+            });
+        }
 
-</script>
+        // Chart 3: Edge AI Servers Market
+        const edgeAIServersMarketCtx = document.getElementById('edgeAIServersMarketChart')?.getContext('2d');
+        if (edgeAIServersMarketCtx) {
+            new Chart(edgeAIServersMarketCtx, {
+                type: 'bar',
+                data: {
+                    labels: processLabelsOkiff(['2024', '2034']),
+                    datasets: [{
+                        label: 'Marché Serveurs Edge AI (Md $)',
+                        data: [2.7, 26.6], // Source: Étude Okiff S1.2
+                        backgroundColor: [okiffAccentYellow, okiffSupportBlue],
+                        borderColor: [okiffAccentYellow, okiffSupportBlue],
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        barPercentage: 0.6,
+                    }]
+                },
+                options: {...commonChartOptionsOkiff}
+            });
+        }
+        
+        // Chart 4: Open Source Market
+        const openSourceMarketCtx = document.getElementById('openSourceMarketChart')?.getContext('2d');
+        if (openSourceMarketCtx) {
+            new Chart(openSourceMarketCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: processLabelsOkiff(['Logiciels Open Source 2024 (41,83 Md$)', 'Croissance vers 2025 (7,09 Md$)']),
+                    datasets: [{
+                        label: 'Marché Logiciels Open Source (Md $)',
+                        data: [41.83, 7.09], // 48.92 - 41.83 = 7.09. Source: Étude Okiff S1.2
+                        backgroundColor: [okiffPrimaryOrange, okiffSecondaryTeal],
+                        hoverBackgroundColor: ['#FB923C', '#2DD4BF'], // Lighter shades for hover
+                        borderColor: '#FFFFFF',
+                        borderWidth: 2,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '65%',
+                    plugins: {
+                        legend: { display: true, position: 'bottom', labels: {color: okiffMediumGray, font: {size: 10, family: 'Inter'}, boxWidth:12} },
+                        tooltip: { 
+                            callbacks: { 
+                                title: tooltipTitleCallbackOkiff,
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed !== null) { label += context.parsed.toLocaleString() + ' Md$'; }
+                                    return label;
+                                }
+                            },
+                           ...commonChartOptionsOkiff.plugins.tooltip
+                        }
+                    },
+                    animation: commonChartOptionsOkiff.animation
+                }
+            });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                     const offsetTop = targetElement.offsetTop - 70; // Adjusted for sticky nav height
+                     window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+    </script>
 </body>
 </html>
